@@ -39,4 +39,11 @@ contract('TestRegistrar', function (accounts) {
         await registrar.register(sha3('eth'), accounts[0], {from: accounts[0]});
         assert.equal(await ens.owner(node), accounts[0]);
     });
+
+    /* new test cases @20220920*/
+    it('registers names for LC', async () => {
+        await registrar.register(sha3('lc'), accounts[0], {from: accounts[0]});
+        // assert.equal(await ens.owner('0x0'), registrar.address);
+        // assert.equal(await ens.owner(node), accounts[0]);
+    });
 });
