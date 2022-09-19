@@ -37,4 +37,10 @@ contract('FIFSRegistrar', function (accounts) {
             await exceptions.expectFailure(registrar.register(sha3('eth'), accounts[1], {from: accounts[1]}));
         });
     });
+
+    /* new test cases */
+    it('FIFSRegister.register => [IP]', async () => {
+        await registrar.register(sha3('IP'), accounts[0], {from: accounts[0]});
+        assert.equal(await ens.owner('0x0'), registrar.address);
+    });
 });
