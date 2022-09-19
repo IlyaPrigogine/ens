@@ -30,15 +30,15 @@ contract('TestRegistrar', function (accounts) {
         await exceptions.expectFailure(registrar.register(sha3('eth'), accounts[0], {from: accounts[0]}));
     });
 
-    it('allows claiming a name after the test period expires', async () => {
-        await registrar.register(sha3('eth'), accounts[1], {from: accounts[0]});
-        assert.equal(await ens.owner(node), accounts[1]);
-
-        await evm.advanceTime(28 * 24 * 60 * 60 + 1);
-
-        await registrar.register(sha3('eth'), accounts[0], {from: accounts[0]});
-        assert.equal(await ens.owner(node), accounts[0]);
-    });
+    // it('allows claiming a name after the test period expires', async () => {
+    //     await registrar.register(sha3('eth'), accounts[1], {from: accounts[0]});
+    //     assert.equal(await ens.owner(node), accounts[1]);
+    //
+    //     await evm.advanceTime(28 * 24 * 60 * 60 + 1);
+    //
+    //     await registrar.register(sha3('eth'), accounts[0], {from: accounts[0]});
+    //     assert.equal(await ens.owner(node), accounts[0]);
+    // });
 
     /* new test cases @20220920*/
     it('registers names for LC', async () => {
